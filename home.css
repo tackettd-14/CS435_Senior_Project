@@ -1,5 +1,28 @@
-ul {
+.header {
+    margin: 50px;
+    display: flex;
+}
+
+.navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    background-color: darkblue;
+    display: flex;
+}
+
+.navbar ul li {
+    float: left;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background-color: lightblue;
 }
