@@ -5,6 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="stylesheets/resources.css">
         <title>Cedar Rapids Resource Directory</title>
+        <link rel="stylesheet" href="../dist/leaflet.css">
+        <script src="../dist/leaflet.js">
+            var map = L.map('map').setView([41.9779, 91.6656], 13);
+            L.tileLayer('https://tile.openstreemap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+            var marker = L.marker([51.5, -0.09]).addTo(map);
+            var circle = L.circle([51.508, -0.11], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5, 
+                radius: 500
+            }).addTo(map);
+        </script>
     </head>
 
     <body>
@@ -23,7 +38,17 @@
         </div>
 
         <div class="flex-content">
-            
+            <div id="map">
+                
+            </div>
+
+            <div>
+
+            </div>
+
+            <div>
+
+            </div>
         </div>
     </body>
 </html>

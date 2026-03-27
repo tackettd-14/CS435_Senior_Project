@@ -43,3 +43,7 @@
 .navbar ul li a:active {
     background-color: aquamarine;
 }
+
+#map {
+    height: 180px;
+}
