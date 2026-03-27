@@ -1,6 +1,13 @@
 .header {
     margin: 50px;
     display: flex;
+    text-align: center;
+    padding: 10px;
+    justify-content: center;
+}
+
+#nonprofit {
+    margin-left: 100px;
 }
 
 .navbar ul {
