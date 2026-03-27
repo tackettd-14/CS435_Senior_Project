@@ -3,9 +3,43 @@
     color: white;
     font-size: 20px;
     padding: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 180px;
+    margin-right: 180px;
     text-align: center;
     justify-content: center;
+    display: block;
     border: 1px solid black;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.navbar ul li {
+    float: left;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 100px;
+    background-color: darkblue;
+    margin: 10px;
+    text-decoration: none;
+    border: 1px solid black;
+}
+
+.navbar ul li a:hover {
+    background-color: lightblue;
+}
+
+.navbar ul li a:active {
+    background-color: aquamarine;
 }
