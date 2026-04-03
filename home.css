@@ -8,10 +8,22 @@
     text-align: center;
     padding: 10px;
     justify-content: center;
+    background-color: darkblue;
+    color: white;
+    margin-right: 175px;
+    margin-left: 175px;
+}
+
+.header h1 {
+    margin-top: 67px;
 }
 
 #nonprofit {
     margin-left: 100px;
+}
+
+.navbar {
+    padding: 0;
 }
 
 .navbar ul {
@@ -19,7 +31,9 @@
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    margin-top: -50px;
+    margin-left: 166px;
+    margin-right: 165px;
 }
 
 .navbar ul li {
@@ -30,9 +44,9 @@
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 100px;
+    padding: 14px 99px;
     background-color: darkblue;
-    margin: 10px;
+    margin: 11px;
     text-decoration: none;
     border: 1px solid black;
 }

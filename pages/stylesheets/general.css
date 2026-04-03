@@ -3,12 +3,16 @@
     color: white;
     font-size: 20px;
     padding: 10px;
-    margin-left: 180px;
-    margin-right: 180px;
+    margin-left: 175px;
+    margin-right: 175px;
     text-align: center;
     justify-content: center;
     display: block;
     border: 1px solid black;
+}
+
+.navbar {
+    padding: 0;
 }
 
 .navbar ul {
@@ -16,9 +20,8 @@
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    margin-left: 120px;
-    margin-right: 120px;
+    margin-left: 166px;
+    margin-right: 165px;
     overflow: hidden;
 }
 
