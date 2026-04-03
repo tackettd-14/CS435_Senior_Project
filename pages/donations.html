@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cedar Rapids Resource Directory</title>
+        <link rel="stylesheet" href="../dist/leaflet.css">
+        <link rel="stylesheet" href="stylesheets/general.css">
+        <link rel="stylesheet" href="stylesheets/resources.css">
+        <script src="../dist/leaflet.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Donations</h1>
+        </div>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="donations.html">Donations</a></li>
+                <li><a href="non-profitorganizations.html">Non-Profit Organizations</a></li>
+            </ul>
+        </div>
+
+        <div class="flex-content">
+            <div id="map"></div>
+
+            <div class="searchbar">
+                <form action="insertcorrectphpfilehere.php">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <div>
+
+            </div>
+        </div>
+    </body>
+
+    <script>
+        // zoom config for the map
+        const config = {
+            minZoom: 7,
+            maxZoom: 18,
+        };
+
+        // magnification with which the map will start
+        const zoom = 10;
+        const lat = 41.97787;
+        const lng = -91.66562;
+
+        const map = L.map("map", config).setView([lat, lng], zoom);
+
+        // Used to load and display tile layers on the map
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map)
+
+        //Plan to add markers marking locations based on category
+        </script>
+
+</html>
