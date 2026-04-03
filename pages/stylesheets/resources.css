@@ -45,5 +45,7 @@
 }
 
 #map {
-    height: 180px;
+    margin-left: 175px;
+    height: 700px;
+    width: 400px;
 }
