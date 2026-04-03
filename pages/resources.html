@@ -28,7 +28,10 @@
             <div id="map"></div>
 
             <div class="searchbar">
-                <input type="text" placeholder="Search...">
+                <form action="insertcorrectphpfilehere.php">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit">Submit</button>
+                </form>
             </div>
 
             <div>
@@ -38,10 +41,12 @@
     </body>
 
     <script>
+        // zoom config for the map
         const config = {
             minZoom: 7,
             maxZoom: 18,
         };
+
         // magnification with which the map will start
         const zoom = 18;
         const lat = 41.97787;
@@ -54,6 +59,8 @@
             attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map)
+
+        //Plan to add markers marking locations based on category
         </script>
 
 </html>

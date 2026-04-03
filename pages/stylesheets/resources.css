@@ -59,11 +59,24 @@ div.flex-content {
 }
 
 .searchbar input[type=text] {
-    margin-left: 100px;
+    margin-left: 200px;
     padding: 6px;
     border: 1px solid black;
     margin-top: 25px;
-    margin-right: 175px;
     font-size: 17px;
-    width: 600px;
+    width: 700px;
+}
+
+.searchbar button:hover {
+    background-color: lightblue;
+}
+
+.searchbar button {
+    padding: 6px;
+    background-color: darkblue;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
 }
