@@ -19,6 +19,7 @@
     justify-content: center;
     margin-left: 120px;
     margin-right: 120px;
+    overflow: hidden;
 }
 
 .navbar ul li {
@@ -44,8 +45,25 @@
     background-color: aquamarine;
 }
 
-#map {
+div.flex-content {
+    display: flex;
+    flex-direction: row;
     margin-left: 175px;
+    margin-right: 160px;
+}
+
+#map {
+    margin-top: 25px;
     height: 700px;
     width: 400px;
+}
+
+.searchbar input[type=text] {
+    margin-left: 100px;
+    padding: 6px;
+    border: 1px solid black;
+    margin-top: 25px;
+    margin-right: 175px;
+    font-size: 17px;
+    width: 600px;
 }
