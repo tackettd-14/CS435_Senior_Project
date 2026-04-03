@@ -48,6 +48,8 @@
 div.flex-content {
     display: flex;
     flex-direction: row;
+    margin-left: 160px;
+    margin-right: 160px;
 }
 
 div.flex-content > div {
