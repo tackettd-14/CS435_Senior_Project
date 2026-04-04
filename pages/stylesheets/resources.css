@@ -33,3 +33,15 @@ div.flex-content {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.flex-content img {
+    margin-top: 70px;
+    margin-right: 50px;
+    border-radius: 25px;
+}
+
+#description p {
+    border: 1px solid black;
+    padding: 50px;
+    margin-top: 20px;
+}
