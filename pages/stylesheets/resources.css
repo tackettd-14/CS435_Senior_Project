@@ -34,14 +34,16 @@ div.flex-content {
     padding-right: 10px;
 }
 
-.flex-content img {
-    margin-top: 70px;
+.resource-images {
+    margin-top: 40px;
     margin-right: 50px;
-    border-radius: 25px;
+    margin-left: 100px;
+    border-radius: 25px; 
 }
 
-#description p {
+.flex-content p {
     border: 1px solid black;
     padding: 50px;
     margin-top: 20px;
+    display: flex;
 }
