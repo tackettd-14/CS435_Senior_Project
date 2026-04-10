@@ -19,7 +19,8 @@
 }
 
 #nonprofit {
-    margin-left: 100px;
+    margin-left: 200px;
+    margin-right: -200px;
 }
 
 .navbar {
