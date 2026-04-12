@@ -99,6 +99,7 @@ footer a:hover {
     flex-direction: row;
     margin-left: 160px;
     margin-right: 160px;
+    justify-content: space-between;
 }
 
 .flex-content > div {
@@ -109,7 +110,6 @@ footer a:hover {
     display: flex;
     flex-direction: row;
     border: 1px solid black;
-    margin-bottom: 20px;
 }
 
 .sections div {
@@ -121,6 +121,10 @@ footer a:hover {
     border: 1px solid black;
     text-decoration: none;
     background-color: lightgray;
+}
+
+#community {
+    margin-right: 150px;
 }
 
 @media screen and (max-width:600px) {
