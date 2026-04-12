@@ -122,10 +122,15 @@ footer a:hover {
     border: 1px solid black;
     text-decoration: none;
     background-color: lightgray;
+    color: black;
 }
 
 #community {
-    margin-right: 150px;
+    max-width: 650px;
+}
+
+.flex-content p, strong {
+    font-size: 18px;
 }
 
 @media screen and (max-width:600px) {
