@@ -105,6 +105,24 @@ footer a:hover {
     margin: 20px;
 }
 
+.sections {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.sections div {
+    padding: 25px;
+}
+
+.sections div a {
+    padding: 5px;
+    border: 1px solid black;
+    text-decoration: none;
+    background-color: lightgray;
+}
+
 @media screen and (max-width:600px) {
     .flex-content {
         flex-direction: column;
