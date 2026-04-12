@@ -61,16 +61,16 @@
 }
 
 footer {
-    position: fixed;
+    display: flex;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: darkblue;
     color: white;
     text-align: center;
-    display: flex;
     justify-content: center;
     padding: 25px;
+    flex: 1;
 }
 
 footer p {
