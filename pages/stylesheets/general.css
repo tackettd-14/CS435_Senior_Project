@@ -2,21 +2,42 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .header {
+    margin: 50px auto 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 10px 20px;
     background-color: darkblue;
     color: white;
-    font-size: 20px;
-    padding: 10px;
-    margin-left: 175px;
-    margin-right: 175px;
-    text-align: center;
-    justify-content: center;
-    display: block;
-    border: 1px solid black;
+    width: min(100% - 32px, 1500px);
+}
+
+.header h1 {
+    margin: 0;
+    flex: 1;
+}
+
+#nonprofit {
+    margin: 0;
+    width: min(100%, 750px);
+    max-width: 45%;
+    height: auto;
 }
 
 .navbar {
     padding: 0;
+    width: min(100% - 32px, 1500px);
+    margin: 0 auto;
 }
 
 .navbar ul {
@@ -24,22 +45,20 @@
     margin: 0;
     padding: 0;
     display: flex;
-    margin-left: 166px;
-    margin-right: 165px;
-    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 11px;
 }
 
 .navbar ul li {
-    float: left;
+    flex: 1 1 180px;
 }
 
 .navbar ul li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 100px;
+    padding: 14px 20px;
     background-color: darkblue;
-    margin: 10px;
     text-decoration: none;
     border: 1px solid black;
 }
@@ -54,15 +73,15 @@
 
 footer {
     display: flex;
-    left: 0;
-    bottom: 0;
+    flex-wrap: wrap;
+    align-items: center;
     width: 100%;
     background-color: darkblue;
     color: white;
     text-align: center;
     justify-content: center;
-    padding: 25px;
-    flex: 1;
+    padding: 16px 20px;
+    margin-top: auto;
 }
 
 footer p {
@@ -78,8 +97,7 @@ footer nav {
 footer a {
     color: white;
     text-decoration: none;
-    margin: 20px;
-    padding: 14 99px;
+    margin: 8px 10px;
 }
 
 footer a:hover {
