@@ -10,28 +10,34 @@ body {
 }
 
 .header {
-    margin: 50px;
+    margin: 50px auto 20px;
     display: flex;
     text-align: center;
-    padding: 10px;
+    align-items: center;
     justify-content: center;
+    gap: 24px;
+    padding: 10px 20px;
     background-color: darkblue;
     color: white;
-    margin-right: 175px;
-    margin-left: 175px;
+    width: min(100% - 32px, 1400px);
 }
 
 .header h1 {
-    margin-top: 67px;
+    margin: 0;
+    flex: 1;
 }
 
 #nonprofit {
-    margin-left: 200px;
-    margin-right: -200px;
+    margin: 0;
+    width: min(100%, 700px);
+    max-width: 45%;
+    height: auto;
 }
 
 .navbar {
     padding: 0;
+    width: min(100% - 32px, 1400px);
+    margin: 0 auto;
 }
 
 .navbar ul {
@@ -39,22 +45,20 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    margin-top: -50px;
-    margin-left: 166px;
-    margin-right: 165px;
+    flex-wrap: wrap;
+    gap: 11px;
 }
 
 .navbar ul li {
-    float: left;
+    flex: 1 1 180px;
 }
 
 .navbar ul li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 99px;
+    padding: 14px 20px;
     background-color: darkblue;
-    margin: 11px;
     text-decoration: none;
     border: 1px solid black;
 }
