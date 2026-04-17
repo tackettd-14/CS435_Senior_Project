@@ -19,7 +19,7 @@ body {
     padding: 10px 20px;
     background-color: darkblue;
     color: white;
-    width: min(100% - 32px, 1400px);
+    width: min(100% - 32px, 1500px);
 }
 
 .header h1 {
@@ -29,14 +29,14 @@ body {
 
 #nonprofit {
     margin: 0;
-    width: min(100%, 700px);
+    width: min(100%, 750px);
     max-width: 45%;
     height: auto;
 }
 
 .navbar {
     padding: 0;
-    width: min(100% - 32px, 1400px);
+    width: min(100% - 32px, 1500px);
     margin: 0 auto;
 }
 
@@ -73,15 +73,15 @@ body {
 
 footer {
     display: flex;
-    left: 0;
-    bottom: 0;
+    flex-wrap: wrap;
+    align-items: center;
     width: 100%;
     background-color: darkblue;
     color: white;
     text-align: center;
     justify-content: center;
-    padding: 25px;
-    flex: 1;
+    padding: 16px 20px;
+    margin-top: auto;
 }
 
 footer p {
@@ -97,8 +97,8 @@ footer nav {
 footer a {
     color: white;
     text-decoration: none;
-    margin: 20px;
-    padding: 14 99px;
+    margin: 8px 10px;
+    padding: 14px 16px;
 }
 
 footer a:hover {
