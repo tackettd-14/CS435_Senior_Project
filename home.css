@@ -151,9 +151,18 @@ footer a:hover {
 .sections {
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
-    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    margin: 0 0 16px 0;
     background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 139, 0.08);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.sections:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 139, 0.14);
 }
 
 .sections div {
