@@ -9,12 +9,12 @@ div.flex-content > div {
     margin: 20px;
 }
 
-#mission {
+.mission {
     border: 1px solid black;
     padding: 10px;
 }
 
-#mission h2 {
+.mission h2 {
     text-align: center;
 }
 
