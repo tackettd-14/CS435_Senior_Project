@@ -25,6 +25,16 @@
             </ul>
         </nav>
 
+        <div class="filter">
+            <span class="filter-label">Filter</span>
+            <button class="filterbtn active" data-cat="all" onclick="filterCategory('all',this)">All</button>
+            <button class="filterbtn" data-cat="food" onclick="filterCategory('food',this)"><span class="filterdot" style="background:lightgreen"></span>Food</button>
+            <button class="filterbtn" data-cat="clothing" onclick="filterCategory('clothing',this)"><span class="filterdot" style="background: slateblue"></span>Clothing</button>
+            <button class="filterbtn" data-cat="household" onclick="filterCategory('household',this)"><span class="filterdot" style="background: orange"></span>Household</button>
+            <button class="filterbtn" data-cat="personal" onclick="filterCategory('personal',this)"><span class="filterdot" style="background: purple"></span>Personal Care</button>
+            <button class="filterbtn" data-cat="open" onclick="filterCategory('open',this)">Open Now</button>
+        </div>
+
         <div class="flex-content">
             <div id="map"></div>
 

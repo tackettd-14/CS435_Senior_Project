@@ -1,3 +1,58 @@
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid #dde0e8;
+    border-bottom: 1px solid #dde0e8;
+    width: min(100% - 32px, 1500px);
+    margin: 0 auto;
+}
+
+.filter-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-right: 4px;
+}
+
+.filterbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 14px;
+    border: 2px solid #dde0e8;
+    border-radius: 99px;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.filterbtn:hover {
+    border-color: darkblue;
+    color: darkblue;
+}
+
+.filterbtn:active {
+    background-color: darkblue;
+    border-color: darkblue;
+    color: white;
+}
+
+.filterdot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
 div.flex-content {
     display: flex;
     flex-direction: row;
