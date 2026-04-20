@@ -99,3 +99,21 @@
     color: #444;
     line-height: 1.6;
 }
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-inner p {
+        font-size: 16px;
+    }
+}
