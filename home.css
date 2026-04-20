@@ -61,15 +61,16 @@ body {
     padding: 14px 20px;
     background-color: darkblue;
     text-decoration: none;
-    border: 1px solid black;
+    border: 2px solid darkblue;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
 }
 
 .navbar ul li a:hover {
-    background-color: lightblue;
-}
-
-.navbar ul li a:active {
-    background-color: aquamarine;
+    background-color: white;
+    color: darkblue;
 }
 
 footer {
@@ -103,7 +104,7 @@ footer a {
 }
 
 footer a:hover {
-    background-color: lightblue;
+    color: lightslategray;
 }
 
 .flex-content {
@@ -174,12 +175,47 @@ footer a:hover {
     padding: 25px;
 }
 
-.sections div a {
-    padding: 5px;
-    border: 1px solid black;
+.card-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.card-body p {
+    margin: 0;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.55;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 7px 18px;
+    background-color: darkblue;
+    color: white;
     text-decoration: none;
-    background-color: lightgray;
-    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    border-radius: 6px;
+    border: 2px solid darkblue;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    align-self: flex-start;
+}
+
+.btn:hover {
+    background-color: white;
+    color: darkblue;
 }
 
 #community {

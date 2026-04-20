@@ -61,15 +61,16 @@ body {
     padding: 14px 20px;
     background-color: darkblue;
     text-decoration: none;
-    border: 1px solid black;
+    border: 2px solid darkblue;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
 }
 
 .navbar ul li a:hover {
-    background-color: lightblue;
-}
-
-.navbar ul li a:active {
-    background-color: aquamarine;
+    background-color: white;
+    color: darkblue;
 }
 
 footer {
