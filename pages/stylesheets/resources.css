@@ -1,3 +1,5 @@
+/* Filter */
+
 .filter {
     display: flex;
     align-items: center;
@@ -53,6 +55,8 @@
     flex-shrink: 0;
 }
 
+/* Page Content */
+
 div.flex-content {
     display: flex;
     flex-direction: row;
@@ -62,6 +66,8 @@ div.flex-content {
     gap: 20px;
     align-items: flex-start;
 }
+
+/* Map */
 
 .map-wrap {
     position: relative;
@@ -125,6 +131,8 @@ div.flex-content {
     flex-shrink: 0;
 }
 
+/* Content Next to Map */
+
 .side-content {
     flex: 1;
     min-width: 0;
@@ -132,6 +140,8 @@ div.flex-content {
     flex-direction: column;
     gap: 16px;
 }
+
+/* Search Bar */
 
 .searchbar {
     background-color: white;
@@ -191,6 +201,8 @@ div.flex-content {
     color: #888;
     margin: 8px 0 0;
 }
+
+/* Search Results */
 
 .resource-list {
     background-color: white;

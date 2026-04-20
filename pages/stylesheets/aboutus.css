@@ -1,3 +1,5 @@
+/* Mission Statement */
+
 .mission {
     background-color: darkblue;
     color: white;
@@ -27,6 +29,8 @@
     opacity: 0.93;
 }
 
+/* Team Member Display */
+
 .project-team {
     max-width: min(100% - 32px, 1500px);
     margin: 40px auto 48px;
@@ -38,6 +42,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+/* Team Member Content */
 
 .team-member {
     background-color: white;

@@ -10,6 +10,8 @@ body {
     background-color: #f0f2f5;
 }
 
+/* Header */
+
 .header {
     margin: 50px auto 20px;
     display: flex;
@@ -34,6 +36,8 @@ body {
     max-width: 45%;
     height: auto;
 }
+
+/* Navigation Bar */
 
 .navbar {
     padding: 0;
@@ -73,6 +77,8 @@ body {
     color: darkblue;
 }
 
+/* Footer */
+
 footer {
     display: flex;
     flex-wrap: wrap;
@@ -107,6 +113,8 @@ footer a:hover {
     color: lightslategray;
 }
 
+/* Body Content */
+
 .flex-content {
     display: flex;
     flex-direction: row;
@@ -122,6 +130,8 @@ footer a:hover {
     flex: 1;
     min-width: 0;
 }
+
+/* Section Headers */
 
 .section-header {
     display: flex;
@@ -148,6 +158,8 @@ footer a:hover {
     padding: 3px 10px;
     border-radius: 20px;
 }
+
+/* Sections */
 
 .sections {
     display: flex;
@@ -197,6 +209,8 @@ footer a:hover {
     line-height: 1.55;
 }
 
+/* Donate Buttons */
+
 .btn {
     display: inline-block;
     margin-top: 6px;
@@ -217,6 +231,8 @@ footer a:hover {
     background-color: white;
     color: darkblue;
 }
+
+/* Support Banner */
 
 .banner {
     margin-top: 8px;

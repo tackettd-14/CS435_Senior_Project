@@ -10,6 +10,8 @@ body {
     background-color: #f0f2f5;
 }
 
+/* Header */
+
 .header {
     margin: 50px auto 20px;
     display: flex;
@@ -28,12 +30,7 @@ body {
     flex: 1;
 }
 
-#nonprofit {
-    margin: 0;
-    width: min(100%, 750px);
-    max-width: 45%;
-    height: auto;
-}
+/* Navigation Bar */
 
 .navbar {
     padding: 0;
@@ -72,6 +69,8 @@ body {
     background-color: white;
     color: darkblue;
 }
+
+/* Footer */
 
 footer {
     display: flex;
