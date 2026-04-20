@@ -3,7 +3,6 @@
     color: white;
     padding: 40px 20px;
     margin-top: 25px;
-    margin-bottom: 50px;
 }
 
 .mission-inner {
@@ -67,4 +66,36 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.team-body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.team-body h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: darkblue;
+}
+
+.team-role {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: darkblue;
+    opacity: 0.55;
+}
+
+.team-body p:last-child {
+    margin: 0;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
 }
