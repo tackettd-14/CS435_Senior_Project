@@ -35,7 +35,7 @@ CREATE TABLE `Donation_Categories` (
 
 LOCK TABLES `Donation_Categories` WRITE;
 /*!40000 ALTER TABLE `Donation_Categories` DISABLE KEYS */;
-INSERT INTO `Donation_Categories` VALUES (1,'Dood'),(2,'Clothing'),(6,'Personal Hygiene Items'),(7,'Toys'),(8,'Baby items'),(9,'Cleaning Supplies/Household items'),(10,'Bedding');
+INSERT INTO `Donation_Categories` VALUES (1,'Food'),(2,'Clothing'),(6,'Personal Hygiene Items'),(7,'Toys'),(8,'Baby items'),(9,'Cleaning Supplies/Household items'),(10,'Bedding');
 /*!40000 ALTER TABLE `Donation_Categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
