@@ -42,6 +42,43 @@ INSERT INTO `Donation_Categories` VALUES (1,'Food'),(2,'Clothing'),(6,'Personal 
 /*!40000 ALTER TABLE `Donation_Categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Table structure for table `Non_Profits`
+--
+
+DROP TABLE IF EXISTS `Non_Profits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Non_Profits` (
+  `Nonprofit_id` int NOT NULL,
+  `Name` varchar(64) DEFAULT NULL,
+  `Area_code` varchar(3) DEFAULT NULL,
+  `Phone_number` varchar(10) DEFAULT NULL,
+  `Street_address` varchar(64) DEFAULT NULL,
+  `City` varchar(23) DEFAULT NULL,
+  `State` varchar(2) DEFAULT NULL,
+  `Zip` varchar(5) DEFAULT NULL,
+  `Email` varchar(64) DEFAULT NULL,
+  `Website` varchar(64) DEFAULT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
+  `Last_updated` varchar(16) DEFAULT NULL,
+  `Latitude` float DEFAULT NULL,
+  `Longitude` float DEFAULT NULL,
+  PRIMARY KEY (`Nonprofit_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Non_Profits`
+--
+
+LOCK TABLES `Non_Profits` WRITE;
+/*!40000 ALTER TABLE `Non_Profits` DISABLE KEYS */;
+INSERT INTO `Non_Profits` VALUES (1,'Mission of Hope','319','200-6130','1700 B Ave NE Ste 101','Cedar Rapids','IA','52402','N/A','https://missionofhopecr.org/','Mission of Hope (Cedar Rapids) is a faith-based nonprofit that supports people in need by providing free meals, food pantry services, clothing, and recovery support, while also offering spiritual guidance and community programs to help restore and transform lives.','2026-04-15',42.0008,-91.6463),(2,'Willis Dady','319','362-7555','1247 4th Ave SE','Cedar Rapids','IA','52403','services@willisdady.org','https://www.willisdady.org/','Willis Dady Homeless Services is a nonprofit that helps people experiencing homelessness by providing shelter, housing support, and employment services, with the goal of helping them become self-sufficient and achieve stable, permanent housing.','2026-04-15',41.9709,-91.6519),(3,'Catherine McAuley Center (CMC)','319','363-4993','1220 5th Ave SE','Cedar Rapids','IA','52402','info@cmc-cr.org','https://cmc-cr.org/','The Catherine McAuley Center (CMC) is a nonprofit organization in Cedar Rapids, Iowa that welcomes adult learners, refugee and immigrant populations, and women to participate in educational and supportive services.','2026-04-15',41.9702,-91.6511),(4,'Eastern Iowa Diaper Bank','319','364-8909','420 6th St SE','Cedar Rapids','IA','52402','info@eidiaperbank.org','https://eidiaperbank.org/','Eastern Iowa Diaper Bank is a nonprofit that provides free diapers and wipes to low-income families.','2026-04-15',41.9765,-91.6582),(5,'We Care Shop','319','364-8909','420 6th St SE Ste 180','Cedar Rapids','IA','52403','N/A','https://www.ypniowa.org/give/we-care-shop/','The YPN We Care Shop is an incentive project that allows families to earn points and redeem them for essential items.','2026-04-15',41.9765,-91.6582),(6,'Freedom Foundation','319','826-2010','4001 Center Point Rd NE','Cedar Rapids','IA','52404','info@usfreedomfoundation.org','https://usfreedomfoundation.org/','U.S. Freedom Foundation supports military veterans by providing community space, basic needs, and access to resources.','2026-04-15',42.0226,-91.667),(7,'Good Shepherd Baptist Church','515','573-0379','327 35th St NE','Cedar Rapids','IA','52402','N/A','https://www.goodshepherdbaptistcr.com/','Good Shepherd Baptist Church provides worship services, biblical teaching, and a supportive church community.','2026-04-15',42.0142,-91.6661),(8,'Together We Achieve','319','432-9754','1150 27th Ave SW','Cedar Rapids','IA','52404','N/A','https://togetherweachieve.org/','Together We Achieve provides food assistance and essential resources including a choice pantry and meals.','2026-04-15',41.9552,-91.6816),(9,'Bethany Lutheran Food Pantry','319','364-6026','2202 Forest Drive SE','Cedar Rapids','IA','52403','office.bethanycr@gmail.com','https://www.bethanycr.org/','Bethany Lutheran Church provides worship services, outreach, and a community food pantry.','2026-04-15',41.9598,-91.6315),(10,'Loaves & Fishes','319','366-7185','1285 3rd Ave SE','Cedar Rapids','IA','52403','westmin@crwpc.org','https://www.crwpc.org/loaves-and-fishes','Loaves & Fishes is a volunteer-run food pantry providing free groceries and fresh food.','2026-04-15',41.9756,-91.6613),(11,'Maranatha Bible Church','319','362-8784','526 3rd Ave SW','Cedar Rapids','IA','52404','contact@maranathabible.org','https://www.maranathabible.org','Maranatha Bible Church provides worship services, biblical teaching, and community programs.','2026-04-15',41.974,-91.6705),(12,'Life Line Ministry','319','366-1787','1101 Oakland Road NE','Cedar Rapids','IA','52402','lifelineministrieschurch@outlook.com','https://www.lifelineministrieschurch.org','Lifeline Ministries Church provides worship, spiritual guidance, and community support including food assistance.','2026-04-15',42.0127,-91.6522),(13,'Christ Holiness Apostolic Temple: The King\'s Kitchen','319','365-9594','19th St SE','Cedar Rapids','IA','52403','N/A','N/A','Food assistance program.','2026-04-15',41.981,-91.64),(14,'Cedar Hill Community Church: Open Hands Food Pantry','319','390-6918','6455 E Avenue NW','Cedar Rapids','IA','52405','N/A','https://cedarhillscr.org/contact/','Open Hands Food Pantry provides groceries and essential pantry items.','2026-04-15',42.0438,-91.7402),(15,'Elayne Fisher Community Cupboard / Unity Center Cedar Rapids','319','393-5422','3791 Blairs Ferry Rd NE','Cedar Rapids','IA','52402','office@unitycr.org','https://unitycr.org/ministry-teams/community-cupboard/','Provides food support and basic necessities to individuals and families.','2026-04-15',42.0349,-91.6678),(16,'First Church of the Open Bible','319','363-3117','1911 E Avenue NW','Cedar Rapids','IA','52405','info@firstopenbible.com','https://www.firstopenbible.com/contact/','Faith-based organization.','2026-04-15',41.9946,-91.7078),(17,'St. Vincent de Paul Society','319','365-5091','928 7th St SE','Cedar Rapids','IA','52401','help@crsvdp.org','https://crsvdp.org','Provides assistance with food, clothing, rent, utilities, and more.','2026-04-15',41.9648,-91.6575),(18,'Families Helping Families','319','294-9706','6000 7th St SW','Cedar Rapids','IA','52404','office@fhfia.org','https://familieshelpingfamiliesofiowa.org','Nonprofit supporting foster families.','2026-04-15',41.9212,-91.7376),(19,'Linn Community Food Pantry','319','364-3543','310 5th St SE','Cedar Rapids','IA','52401','lincofb@gmail.com','https://linncommunityfoodbank.org/','Provides short-term emergency food supplies.','2026-04-15',41.976,-91.663),(20,'First Presbyterian Church','319','364-6148','310 5th St SE','Cedar Rapids','IA','52401','office@fpccr.org','https://fpccr.org/','Provides free hot meal every Sunday.','2026-04-15',41.979,-91.663);
+/*!40000 ALTER TABLE `Non_Profits` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `Donation_Hours`
 --
@@ -98,42 +135,6 @@ LOCK TABLES `Donation_Lists` WRITE;
 /*!40000 ALTER TABLE `Donation_Lists` DISABLE KEYS */;
 INSERT INTO `Donation_Lists` VALUES (1,1,1),(2,1,2),(6,2,10),(7,2,2),(9,2,6),(10,2,9),(11,3,1),(12,3,6),(13,3,9),(14,3,10),(15,4,8),(16,5,8),(18,6,1),(19,6,2),(20,6,6),(21,8,1),(22,8,6),(23,8,9),(24,12,1),(26,18,6),(27,18,8);
 /*!40000 ALTER TABLE `Donation_Lists` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Non_Profits`
---
-
-DROP TABLE IF EXISTS `Non_Profits`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Non_Profits` (
-  `Nonprofit_id` int NOT NULL,
-  `Name` varchar(64) DEFAULT NULL,
-  `Area_code` varchar(3) DEFAULT NULL,
-  `Phone_number` varchar(10) DEFAULT NULL,
-  `Street_address` varchar(64) DEFAULT NULL,
-  `City` varchar(23) DEFAULT NULL,
-  `State` varchar(2) DEFAULT NULL,
-  `Zip` varchar(5) DEFAULT NULL,
-  `Email` varchar(64) DEFAULT NULL,
-  `Website` varchar(64) DEFAULT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
-  `Last_updated` varchar(16) DEFAULT NULL,
-  `Latitude` float DEFAULT NULL,
-  `Longitude` float DEFAULT NULL,
-  PRIMARY KEY (`Nonprofit_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Non_Profits`
---
-
-LOCK TABLES `Non_Profits` WRITE;
-/*!40000 ALTER TABLE `Non_Profits` DISABLE KEYS */;
-INSERT INTO `Non_Profits` VALUES (1,'Mission of Hope','319','200-6130','1700 B Ave NE Ste 101','Cedar Rapids','IA','52402','N/A','https://missionofhopecr.org/','Mission of Hope (Cedar Rapids) is a faith-based nonprofit that supports people in need by providing free meals, food pantry services, clothing, and recovery support, while also offering spiritual guidance and community programs to help restore and transform lives.','2026-04-15',42.0008,-91.6463),(2,'Willis Dady','319','362-7555','1247 4th Ave SE','Cedar Rapids','IA','52403','services@willisdady.org','https://www.willisdady.org/','Willis Dady Homeless Services is a nonprofit that helps people experiencing homelessness by providing shelter, housing support, and employment services, with the goal of helping them become self-sufficient and achieve stable, permanent housing.','2026-04-15',41.9709,-91.6519),(3,'Catherine McAuley Center (CMC)','319','363-4993','1220 5th Ave SE','Cedar Rapids','IA','52402','info@cmc-cr.org','https://cmc-cr.org/','The Catherine McAuley Center (CMC) is a nonprofit organization in Cedar Rapids, Iowa that welcomes adult learners, refugee and immigrant populations, and women to participate in educational and supportive services.','2026-04-15',41.9702,-91.6511),(4,'Eastern Iowa Diaper Bank','319','364-8909','420 6th St SE','Cedar Rapids','IA','52402','info@eidiaperbank.org','https://eidiaperbank.org/','Eastern Iowa Diaper Bank is a nonprofit that provides free diapers and wipes to low-income families.','2026-04-15',41.9765,-91.6582),(5,'We Care Shop','319','364-8909','420 6th St SE Ste 180','Cedar Rapids','IA','52403','N/A','https://www.ypniowa.org/give/we-care-shop/','The YPN We Care Shop is an incentive project that allows families to earn points and redeem them for essential items.','2026-04-15',41.9765,-91.6582),(6,'Freedom Foundation','319','826-2010','4001 Center Point Rd NE','Cedar Rapids','IA','52404','info@usfreedomfoundation.org','https://usfreedomfoundation.org/','U.S. Freedom Foundation supports military veterans by providing community space, basic needs, and access to resources.','2026-04-15',42.0226,-91.667),(7,'Good Shepherd Baptist Church','515','573-0379','327 35th St NE','Cedar Rapids','IA','52402','N/A','https://www.goodshepherdbaptistcr.com/','Good Shepherd Baptist Church provides worship services, biblical teaching, and a supportive church community.','2026-04-15',42.0142,-91.6661),(8,'Together We Achieve','319','432-9754','1150 27th Ave SW','Cedar Rapids','IA','52404','N/A','https://togetherweachieve.org/','Together We Achieve provides food assistance and essential resources including a choice pantry and meals.','2026-04-15',41.9552,-91.6816),(9,'Bethany Lutheran Food Pantry','319','364-6026','2202 Forest Drive SE','Cedar Rapids','IA','52403','office.bethanycr@gmail.com','https://www.bethanycr.org/','Bethany Lutheran Church provides worship services, outreach, and a community food pantry.','2026-04-15',41.9598,-91.6315),(10,'Loaves & Fishes','319','366-7185','1285 3rd Ave SE','Cedar Rapids','IA','52403','westmin@crwpc.org','https://www.crwpc.org/loaves-and-fishes','Loaves & Fishes is a volunteer-run food pantry providing free groceries and fresh food.','2026-04-15',41.9756,-91.6613),(11,'Maranatha Bible Church','319','362-8784','526 3rd Ave SW','Cedar Rapids','IA','52404','contact@maranathabible.org','https://www.maranathabible.org','Maranatha Bible Church provides worship services, biblical teaching, and community programs.','2026-04-15',41.974,-91.6705),(12,'Life Line Ministry','319','366-1787','1101 Oakland Road NE','Cedar Rapids','IA','52402','lifelineministrieschurch@outlook.com','https://www.lifelineministrieschurch.org','Lifeline Ministries Church provides worship, spiritual guidance, and community support including food assistance.','2026-04-15',42.0127,-91.6522),(13,'Christ Holiness Apostolic Temple: The King\'s Kitchen','319','365-9594','19th St SE','Cedar Rapids','IA','52403','N/A','N/A','Food assistance program.','2026-04-15',41.981,-91.64),(14,'Cedar Hill Community Church: Open Hands Food Pantry','319','390-6918','6455 E Avenue NW','Cedar Rapids','IA','52405','N/A','https://cedarhillscr.org/contact/','Open Hands Food Pantry provides groceries and essential pantry items.','2026-04-15',42.0438,-91.7402),(15,'Elayne Fisher Community Cupboard / Unity Center Cedar Rapids','319','393-5422','3791 Blairs Ferry Rd NE','Cedar Rapids','IA','52402','office@unitycr.org','https://unitycr.org/ministry-teams/community-cupboard/','Provides food support and basic necessities to individuals and families.','2026-04-15',42.0349,-91.6678),(16,'First Church of the Open Bible','319','363-3117','1911 E Avenue NW','Cedar Rapids','IA','52405','info@firstopenbible.com','https://www.firstopenbible.com/contact/','Faith-based organization.','2026-04-15',41.9946,-91.7078),(17,'St. Vincent de Paul Society','319','365-5091','928 7th St SE','Cedar Rapids','IA','52401','help@crsvdp.org','https://crsvdp.org','Provides assistance with food, clothing, rent, utilities, and more.','2026-04-15',41.9648,-91.6575),(18,'Families Helping Families','319','294-9706','6000 7th St SW','Cedar Rapids','IA','52404','office@fhfia.org','https://familieshelpingfamiliesofiowa.org','Nonprofit supporting foster families.','2026-04-15',41.9212,-91.7376),(19,'Linn Community Food Pantry','319','364-3543','310 5th St SE','Cedar Rapids','IA','52401','lincofb@gmail.com','https://linncommunityfoodbank.org/','Provides short-term emergency food supplies.','2026-04-15',41.976,-91.663),(20,'First Presbyterian Church','319','364-6148','310 5th St SE','Cedar Rapids','IA','52401','office@fpccr.org','https://fpccr.org/','Provides free hot meal every Sunday.','2026-04-15',41.979,-91.663);
-/*!40000 ALTER TABLE `Non_Profits` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
