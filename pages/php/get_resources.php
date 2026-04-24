@@ -18,3 +18,26 @@ if ($mysqli->connect_error) {
     exit;
 }
 $mysqli->set_charset('utf8mb4');
+
+// Query to join resources and non-profit tables
+$sql = "
+    SELECT
+        r.Resource_id AS id,
+        np.Name AS name,
+        np.Street_address AS address,
+        np.City AS city,
+        np.State AS state,
+        np.Zip AS zip
+        np.Email AS email,
+        np.Area_code AS area_code,
+        np.Phone_number AS phone,
+        np.Website AS website,
+        np.Latitude AS latitude,
+        np.Longitude AS longitude,
+        np.Last_updated AS last_updated
+        np.Description AS description
+        rc.Name AS category
+    FROM Resources r
+    INNER JOIN Non_Profits np ON r.Nonprofit_id = np.Nonprofit_id
+    INNER JOIN Resource_Categories rc ON r.RCategory_id = rc.RCategory_id
+    ORDER BY np.Name ASC";
