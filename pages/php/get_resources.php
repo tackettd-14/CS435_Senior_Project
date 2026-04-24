@@ -41,3 +41,12 @@ $sql = "
     INNER JOIN Non_Profits np ON r.Nonprofit_id = np.Nonprofit_id
     INNER JOIN Resource_Categories rc ON r.RCategory_id = rc.RCategory_id
     ORDER BY np.Name ASC";
+
+    $result = $mysqli->query($sql);
+    if(!$result) {
+        http_response_code(500);
+        echo json_encode([
+            'error' => 'Query failed'
+        ]);
+        exit;
+    }
