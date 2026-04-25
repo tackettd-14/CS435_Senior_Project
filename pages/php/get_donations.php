@@ -67,3 +67,30 @@ $sql = "
         echo json_encode([]);
         exit;
     }
+
+    $ids_placeholder = implode(',', array_keys($donations));
+
+    // Query for donation time table
+    $sqlhours = "
+        SELECT Nonprofit_id, Day, Open, Close
+        FROM Donation_Hours
+        WHERE Nonprofit_id IN ($ids_placeholder)
+        ORDER BY Nonprofit_id,
+            FIELD(Day,'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),
+            Open";
+
+    // Fill array with time information
+    $resulthours = $mysqli->query($sqlhours);
+    if($resulthours) {
+        while($h = $resulthours) {
+            $did = (int) $h['Nonprofit_id'];
+            if(isset($donations[$did])) {
+                $donations[$did]['hours'][] = [
+                    'day' => $h['Day'],
+                    'open' => $h['Open'],
+                    'close' => $h['Close']
+                ];
+            }
+        }
+        $resulthours->free();
+    }
