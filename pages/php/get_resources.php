@@ -89,7 +89,7 @@ $sql = "
     // Fill array with time information
     $resulthours = $mysqli->query($sqlhours);
     if($resulthours) {
-        while($h = $resulthours) {
+        while($h = $resulthours->fetch_assoc()) {
             $rid = (int) $h['Resource_id'];
             if(isset($resources[$rid])) {
                 $resources[$rid]['hours'][] = [
