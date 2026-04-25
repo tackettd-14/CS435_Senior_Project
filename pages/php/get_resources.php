@@ -10,7 +10,7 @@ define('DBName', 'resource_directory');
 header('Content-Type: application/json');
 
 $mysqli = new mysqli(DBHost, DBUser, DBPass, DBName);
-if ($mysqli->connect_error) {
+if($mysqli->connect_error) {
     http_response_code(500);
     echo json_encode([
         'error' => 'Database connection failed'
@@ -53,7 +53,7 @@ $sql = "
 
     // Fill resources array with results
     $resources = [];
-    while ($row = $result->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
         $row['id'] = (int) $row['id'];
         $row['latitude'] = (float) $row['latitude'];
         $row['longitude'] = (float) $row['longitude'];
@@ -66,4 +66,39 @@ $sql = "
     if(empty($resources)) {
         echo json_encode([]);
         exit;
+    }
+
+    $ids_placeholder = implode(',', array_keys($resources));
+
+    // Query for resource time table
+    $sqlhours = "
+        SELECT
+            rh.Resource_id,
+            rw.Description AS desc,
+            rh.Week AS week_id,
+            rh.Day,
+            rh.Open,
+            rh.Close
+        FROM Resource_Hours rh
+        INNER JOIN Resource_Week rw ON rh.Week = rw.RWeek_id
+        WHERE rh.Resource_id IN ($ids_placeholder)
+        ORDER BY rh.Resource_id, rh.Week,
+            FIELD(rh.Day,'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),
+            rh.Open";
+
+    // Fill array with time information
+    $resulthours = $mysqli->query($sqlhours);
+    if($resulthours) {
+        while($h = $resulthours) {
+            $rid = (int) $h['Resource_id'];
+            if(isset($resources[$rid])) {
+                $resources[$rid]['hours'][] = [
+                    'week' => $h['desc'],
+                    'day' => $h['Day'],
+                    'open' => $h['Open'],
+                    'close' => $h['Close']
+                ];
+            }
+        }
+        $resulthours->free();
     }
