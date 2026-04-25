@@ -102,3 +102,7 @@ $sql = "
         }
         $resulthours->free();
     }
+
+    $mysqli(close);
+
+    echo json_encode(array_values($resources), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

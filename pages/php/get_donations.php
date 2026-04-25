@@ -10,7 +10,7 @@ define('DBName', 'resource_directory');
 header('Content-Type: application/json');
 
 $mysqli = new mysqli(DBHost, DBUser, DBPass, DBName);
-if ($mysqli->connect_error) {
+if($mysqli->connect_error) {
     http_response_code(500);
     echo json_encode([
         'error' => 'Database connection failed'
@@ -53,7 +53,7 @@ $sql = "
 
     // Fill donations array with results
     $donations = [];
-    while ($row = $result->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
         $row['id'] = (int) $row['id'];
         $row['latitude'] = (float) $row['latitude'];
         $row['longitude'] = (float) $row['longitude'];
