@@ -82,7 +82,7 @@ $sql = "
     // Fill array with time information
     $resulthours = $mysqli->query($sqlhours);
     if($resulthours) {
-        while($h = $resulthours) {
+        while($h = $resulthours->fetch_assoc()) {
             $did = (int) $h['Nonprofit_id'];
             if(isset($donations[$did])) {
                 $donations[$did]['hours'][] = [
@@ -94,3 +94,29 @@ $sql = "
         }
         $resulthours->free();
     }
+
+    // Query for donation categories
+    $sqlcat = "
+        SELECT 
+            dl.Nonprofit_id,
+            dc.CName AS catname
+        FROM Donation_Lists dl
+        INNER JOIN Donation_Categories dc ON dl.Donation_Category = dc.DCategory_id
+        WHERE dl.Nonprofit_id IN ($ids_placeholder)
+        ORDER BY Nonprofit_id, dc.CName";
+
+    // Fill array with donation categories
+    $resultcat = $mysqli->query($sqlcat);
+    if($resultcat) {
+        while($d = $resultcat->fetch_assoc()) {
+            $did = (int) $d['Nonprofit_id'];
+            if(isset($donations[$did])) {
+                $donations[$did]['donations'][] = $d['catname'];
+            }
+        }
+        $resultscat->free();
+    }
+
+    $mysqli(close);
+
+    echo json_encode(array_values($donations), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
