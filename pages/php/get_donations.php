@@ -50,3 +50,20 @@ $sql = "
         ]);
         exit;
     }
+
+    // Fill donations array with results
+    $donations = [];
+    while ($row = $result->fetch_assoc()) {
+        $row['id'] = (int) $row['id'];
+        $row['latitude'] = (float) $row['latitude'];
+        $row['longitude'] = (float) $row['longitude'];
+        $row['hours'] = [];
+        $row['categories'] = [];
+        $donations[$row['id']] = $row;
+    }
+    $result->free();
+
+    if(empty($donations)) {
+        echo json_encode([]);
+        exit;
+    }

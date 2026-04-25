@@ -50,3 +50,20 @@ $sql = "
         ]);
         exit;
     }
+
+    // Fill resources array with results
+    $resources = [];
+    while ($row = $result->fetch_assoc()) {
+        $row['id'] = (int) $row['id'];
+        $row['latitude'] = (float) $row['latitude'];
+        $row['longitude'] = (float) $row['longitude'];
+        $row['hours'] = [];
+        $row['category'] = $row['category'] ?? 'Uncategorized';
+        $resources[$row['id']] = $row;
+    }
+    $result->free();
+
+    if(empty($resources)) {
+        echo json_encode([]);
+        exit;
+    }
