@@ -196,6 +196,10 @@ div.flex-content {
     line-height: 1;
 }
 
+.clear-search.visible {
+    display: block;
+}
+
 .searchbar p {
     font-size: 12px;
     color: #888;
