@@ -47,11 +47,30 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
+function placeMarkers() {
+
+}
+
 function applyFilters() {
 
 }
 
+async function loadDonations() {
+    const loadmsg = document.getElementById("searchResults");
+    loadmsg.innerHTML = '<div class="loadingMSG">Loading donations...</div>';
 
+    try {
+        const don = await fetch("get_donations.php");
+        if(!don.ok) throw new Error(`HTTP ${don.status}`);
+        DONATIONS = await don.json();
+
+        placeMarkers(DONATIONS);
+        applyFilters();
+    } catch (err) {
+        loadmsg.innerHTML = '<div class="loadingMSG" style="color:red;">Failed to load donations. Please try refreshing the page.</div>'
+        console.error("loadResources error:", err);
+    }
+}
 
 // Boot
 document.addEventListener("DOMContentLoaded", () => {
