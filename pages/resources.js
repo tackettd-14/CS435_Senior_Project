@@ -45,7 +45,7 @@ function placeMarkers(resources) {
     markers = {};
 
     resources.forEach(r => {
-        if(!r.lat || r.lng) return;
+        if(!r.lat || !r.lng) return;
 
         const color = cat_colors[r.category] || '#888';
 
@@ -173,10 +173,6 @@ function renderResources(resources) {
     }
 }
 
-// Popups
-
-
-
 // Search bar
 
 // Filters
@@ -210,7 +206,7 @@ function applyFilters() {
 
 function filterCategory(cat, el) {
     activeFilter = cat;
-    document.querySelectorAll(".filterBtn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".filterbtn").forEach(b => b.classList.remove("active"));
     el.classList.add("active");
     applyFilters();
 }
