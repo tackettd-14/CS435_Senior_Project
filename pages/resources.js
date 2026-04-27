@@ -100,8 +100,12 @@ function placeMarkers(resources) {
     updateOpenCount(resources);
 }
 
-function updateMarkerVis() {
-
+function updateMarkerVis(visible) {
+    const visibleIDs = new Set(visible.map(r => r.id));
+    Object.entries(markers).forEach(([id, m]) => {
+        const el = m.getElement();
+        if(el) el.style.opacity = visibleIDs.has(parseInt(id)) ? "1" : "0.18";
+    });
 }
 
 // Check if resource is currently open
@@ -201,7 +205,11 @@ function applyFilters() {
 }
 
 function cardClick(id) {
-    
+    const r = RESOURCES.find(x => x.id === id);
+    if(!r || !markers[r.id]) return;
+    map.flyTo([r.lat, r.lng], 15, { animate: true, duration: 0.8 });
+    markers[r.id].openPopup();
+    highlightCard();
 }
 
 // Highlight cards
