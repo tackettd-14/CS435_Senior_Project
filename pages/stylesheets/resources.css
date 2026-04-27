@@ -148,7 +148,9 @@ div.flex-content {
 .popup-tag { font-size: 11px; padding: 2px 7px; border-radius: 99px; background: #eef0f5; color: #555; }
 .popup-status { font-size: 11px; font-weight: 600; }
 .popup-status.open { color: green; }
-.popup-status.closed { color: #555; }
+.popup-status.closed { color: #999; }
+.popup-footer { padding: 8px 15px; border-top: 1px solid #eee; }
+.popup-footer a { font-size: 12px; color: darkblue; text-decoration: none; font-weight: 600; }
 
 /* Content Next to Map */
 
