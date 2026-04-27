@@ -27,7 +27,7 @@ const config = {
 };
 
 // Magnification with which the map will start
-const zoom = 10;
+const zoom = 12;
 const lat = 41.97787;
 const lng = -91.66562;
 
