@@ -118,8 +118,8 @@ function checkOpen(hours) {
 
     return hours.some(h => {
         if (h.day !== todayName) return false;
-        const [openH, openM] = h.open.split(".").map(Number);
-        const [closeH, closeM] = h.close.split(".").map(Number);
+        const [openH, openM] = h.open.split(":").map(Number);
+        const [closeH, closeM] = h.close.split(":").map(Number);
         const openMin = openH * 60 + openM;
         const closeMin = closeH * 60 + closeM;
         return currentMinutes >= openMin && currentMinutes < closeMin;
