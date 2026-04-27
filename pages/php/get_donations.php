@@ -28,14 +28,13 @@ $sql = "
         np.City AS city,
         np.State AS state,
         np.Zip AS zip,
-        np.Email AS email,
-        np.Area_code AS area_code,
         np.Phone_number AS phone,
+        np.Area_code AS area_code,
+        np.Email AS email,
         np.Website AS website,
-        np.Latitude AS latitude,
-        np.Longitude AS longitude,
-        np.Last_updated AS last_updated,
         np.Description AS description,
+        np.Latitude AS lat,
+        np.Longitude AS lng,
         dc.CName AS category
     FROM Donation_Lists d
     INNER JOIN Non_Profits np ON d.Nonprofit_id = np.Nonprofit_id
@@ -55,8 +54,8 @@ $sql = "
     $donations = [];
     while($row = $result->fetch_assoc()) {
         $row['id'] = (int) $row['id'];
-        $row['latitude'] = (float) $row['latitude'];
-        $row['longitude'] = (float) $row['longitude'];
+        $row['lat'] = (float) $row['lat'];
+        $row['lng'] = (float) $row['lng'];
         $row['hours'] = [];
         $row['categories'] = [];
         $donations[$row['id']] = $row;
@@ -114,7 +113,7 @@ $sql = "
                 $donations[$did]['donations'][] = $d['catname'];
             }
         }
-        $resultscat->free();
+        $resultcat->free();
     }
 
     $mysqli->close();

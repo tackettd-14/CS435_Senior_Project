@@ -72,7 +72,7 @@ function placeMarkers(resources) {
         const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>';
 
         const popup = L.popup({ closeButton: false, maxWidth: 240 }).setContent(`
-            <div class="popup-inner>
+            <div class="popup-inner">
                 <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px;">
                     <div class="popup-name">${r.name}</div>
                     ${statusHTML}
@@ -128,6 +128,36 @@ function updateOpenCount(resources) {
 // Cards
 function renderResource(r) {
     const isOpen = checkOpen(r.hours);
+    const badgeHTML = isOpen ? `<span class="rc-badge badge-open">Open now</span>`
+        : `<span class="rc-badge badge-closed">Closed</span>`;
+
+        const hoursShort = r.hours && r.hours.length > 0
+            ? `${r.hours[0].day} ${r.hours[0].open}-${r.hours[0].close}`
+            + (r.hours.length > 1 ? ` +${r.hours.length - 1} more` :"") : "Hours not listed";
+
+        const color = cat_colors[r.category] || "#888";
+
+        return `
+            <div class="resource-card" id="card-${r.id}"
+                style="border-left-color:${color};" onclick="cardClick(${r.id})">
+                <div class="rc-name">${badgeHTML}${r.name}</div>
+                <div class="rc-metadata">
+                    ${r.address}, ${r.city}<br>
+                    ${hoursShort}
+                </div>
+            </div>
+        `;
+    }
+
+function renderResources(resources) {
+    const container = document.getElementById("searchResults");
+    const noResults = document.getElementById("noResults");
+    const count = document.getElementById("resultsCount");
+
+    if(resources.length === 0) {
+        
+    }
+
 }
 
 // Search bar
@@ -143,8 +173,8 @@ function highlightCard() {
 
 // Fetch resources from PHP file
 async function loadResources() {
-    const loadmsg = document.getElementById("searchResults");
-    loadmsg.innerHTML = `<div class="loadingMSG">Loading resources...</div>`;
+    const container = document.getElementById("searchResults");
+    container.innerHTML = `<div class="loadingMSG">Loading resources...</div>`;
 
     try {
         const res = await fetch("php/get_resources.php");
@@ -153,7 +183,7 @@ async function loadResources() {
         placeMarkers(RESOURCES); 
         applyFilters();
     } catch (err) {
-        loadmsg.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.</div>`;
+        container.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.</div>`;
         console.error("loadResources error:", err);
     }
 }

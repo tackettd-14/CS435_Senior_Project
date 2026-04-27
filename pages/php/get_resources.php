@@ -1,7 +1,6 @@
 <?php
 
 //Database config
-
 define('DBHost', 'localhost');
 define('DBUser', 'admin');
 define('DBPass', '1234');
@@ -28,14 +27,13 @@ $sql = "
         np.City AS city,
         np.State AS state,
         np.Zip AS zip,
-        np.Email AS email,
-        np.Area_code AS area_code,
         np.Phone_number AS phone,
+        np.Area_code AS area_code,
+        np.Email AS email,
         np.Website AS website,
-        np.Latitude AS latitude,
-        np.Longitude AS longitude,
-        np.Last_updated AS last_updated,
         np.Description AS description,
+        np.Latitude AS lat,
+        np.Longitude AS lng,
         rc.Name AS category
     FROM Resources r
     INNER JOIN Non_Profits np ON r.Nonprofit_id = np.Nonprofit_id
@@ -55,8 +53,8 @@ $sql = "
     $resources = [];
     while($row = $result->fetch_assoc()) {
         $row['id'] = (int) $row['id'];
-        $row['latitude'] = (float) $row['latitude'];
-        $row['longitude'] = (float) $row['longitude'];
+        $row['lat'] = (float) $row['lat'];
+        $row['lng'] = (float) $row['lng'];
         $row['hours'] = [];
         $row['category'] = $row['category'] ?? 'Uncategorized';
         $resources[$row['id']] = $row;
@@ -74,7 +72,7 @@ $sql = "
     $sqlhours = "
         SELECT
             rh.Resource_id,
-            rw.Description AS desc,
+            rw.Description AS week_desc,
             rh.Week AS week_id,
             rh.Day,
             rh.Open,
