@@ -100,6 +100,10 @@ function placeMarkers(resources) {
     updateOpenCount(resources);
 }
 
+function updateMarkerVis() {
+    
+}
+
 // Check if resource is currently open
 function checkOpen(hours) {
     if(!hours || hours.length === 0) return false;
@@ -169,7 +173,31 @@ function renderResources(resources) {
 
 // Filters
 function applyFilters() {
-    
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const clearBtn = document.getElementById("clearSearch");
+    clearBtn.classList.toggle("visible", query.length > 0);
+
+    let results = RESOURCES;
+
+    // Category
+    if(activeFilter === "open") {
+        results = results.filter(r => checkOpen(r.hours));
+    } else if(activeFilter !== "all") {
+        results = results.filter(r => cat_labels[r.category] === activeFilter);
+    }
+
+    // Text search
+    if(query) {
+        results = results.filter(r => {
+            const haystack = [
+                r.name, r.category, r.address, r.city, r.description
+            ].join(" ").toLowerCase();
+            return haystack.includes(query);
+        });
+    }
+    renderResources(results);
+    updateMarkerVis(results);
+    updateOpenCount(results);
 }
 
 function highlightCard() {
