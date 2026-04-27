@@ -325,3 +325,13 @@ div.flex-content {
 
 .badge-open { background-color: green; }
 .badge-closed { background-color: #999; }
+
+/* Responsive */
+
+@media (max-width: 860px) {
+    .flex-content {
+        grid-template-columns: 1fr;
+    }
+    #map { min-height: 340px; }
+    #searchResults { max-height: 300px; }
+}
