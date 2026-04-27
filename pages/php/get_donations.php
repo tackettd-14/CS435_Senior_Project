@@ -34,8 +34,8 @@ $sql = "
         np.Website AS website,
         np.Latitude AS latitude,
         np.Longitude AS longitude,
-        np.Last_updated AS last_updated
-        np.Description AS description
+        np.Last_updated AS last_updated,
+        np.Description AS description,
         dc.CName AS category
     FROM Donation_Lists d
     INNER JOIN Non_Profits np ON d.Nonprofit_id = np.Nonprofit_id
@@ -117,6 +117,6 @@ $sql = "
         $resultscat->free();
     }
 
-    $mysqli(close);
+    $mysqli->close();
 
     echo json_encode(array_values($donations), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

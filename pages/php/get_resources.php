@@ -34,8 +34,8 @@ $sql = "
         np.Website AS website,
         np.Latitude AS latitude,
         np.Longitude AS longitude,
-        np.Last_updated AS last_updated
-        np.Description AS description
+        np.Last_updated AS last_updated,
+        np.Description AS description,
         rc.Name AS category
     FROM Resources r
     INNER JOIN Non_Profits np ON r.Nonprofit_id = np.Nonprofit_id
@@ -103,6 +103,6 @@ $sql = "
         $resulthours->free();
     }
 
-    $mysqli(close);
+    $mysqli->close();
 
     echo json_encode(array_values($resources), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
