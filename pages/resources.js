@@ -208,6 +208,13 @@ function applyFilters() {
     updateOpenCount(results);
 }
 
+function filterCategory(cat, el) {
+    activeFilter = cat;
+    document.querySelectorAll(".filterBtn").forEach(b => b.classList.remove("active"));
+    el.classList.add("active");
+    applyFilters();
+}
+
 function cardClick(id) {
     const r = RESOURCES.find(x => x.id === id);
     if(!r || !markers[r.id]) return;
@@ -220,7 +227,7 @@ function clearSearch() {
     document.getElementById("searchInput").value = "";
     document.getElementById("clearSearch").classList.remove("visible");
     applyFilters();
-    document.getElementById("searchInput").focus();s
+    document.getElementById("searchInput").focus();
 }
 
 // Highlight cards
