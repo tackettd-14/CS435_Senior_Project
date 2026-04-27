@@ -100,12 +100,33 @@ function placeMarkers(resources) {
     updateOpenCount(resources);
 }
 
-function checkOpen() {
-    
+// Check if resource is currently open
+function checkOpen(hours) {
+    if(!hours || hours.length === 0) return false;
+    const now = new Date();
+    const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const todayName = dayNames[now.getDay()];
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    return hours.some(h => {
+        if (h.day !== todayName) return false;
+        const [openH, openM] = h.open.split(".").map(Number);
+        const [closeH, closeM] = h.close.split(".").map(Number);
+        const openMin = openH * 60 + openM;
+        const closeMin = closeH * 60 + closeM;
+        return currentMinutes >= openMin && currentMinutes < closeMin;
+    });
 }
 
 function updateOpenCount() {
 
+}
+
+// Render resources
+
+// Cards
+function renderResource(r) {
+    const isOpen = checkOpen(r.hours);
 }
 
 // Search bar
