@@ -57,17 +57,17 @@ function applyFilters() {
 
 async function loadDonations() {
     const loadmsg = document.getElementById("searchResults");
-    loadmsg.innerHTML = '<div class="loadingMSG">Loading donations...</div>';
+    loadmsg.innerHTML = `<div class="loadingMSG">Loading donations...</div>`;
 
     try {
-        const don = await fetch("get_donations.php");
+        const don = await fetch("php/get_donations.php");
         if(!don.ok) throw new Error(`HTTP ${don.status}`);
         DONATIONS = await don.json();
 
         placeMarkers(DONATIONS);
         applyFilters();
     } catch (err) {
-        loadmsg.innerHTML = '<div class="loadingMSG" style="color:red;">Failed to load donations. Please try refreshing the page.</div>'
+        loadmsg.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load donations. Please try refreshing the page.</div>`;
         console.error("loadResources error:", err);
     }
 }

@@ -68,9 +68,44 @@ function placeMarkers(resources) {
         const hoursDisplay = r.hours && r.hours.length > 0
             ? r.hours.slice(0, 2).map(h => `${h.day} ${h.open}-${h.close}`).join(".") : "Hours not listed";
         
-        const isOpen = checKOpen(r.hours);
-        const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>'
-    })
+        const isOpen = checkOpen(r.hours);
+        const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>';
+
+        const popup = L.popup({ closeButton: false, maxWidth: 240 }).setContent(`
+            <div class="popup-inner>
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px;">
+                    <div class="popup-name">${r.name}</div>
+                    ${statusHTML}
+                </div>
+                <div class="popup-metadata">
+                    ${r.address}, ${r.city}, ${r.state}<br>
+                    ${hoursDisplay}
+                </div>
+                <div class="popup-tags">
+                    <span class="popup-tag">${r.category}</span>
+                </div>
+            </div>
+            <div class="popup-footer">
+                ${r.website && r.website !== "N/A"
+                    ? `<a href="${r.website}" target="_blank" rel="noopener">Visit Website -></a>`
+                    : `<span style="font-size:12px; color:#999;">No website listed</span>`}
+            </div>
+        `);
+
+        const marker = L.marker([r.lat, r.lng], { icon }).addTo(map).bindPopup(popup);
+        marker.on("click", () => highlightCard(r.id));
+        markers[r.id] = marker;
+    });
+
+    updateOpenCount(resources);
+}
+
+function checkOpen() {
+    
+}
+
+function updateOpenCount() {
+
 }
 
 // Search bar
@@ -80,20 +115,23 @@ function applyFilters() {
     
 }
 
+function highlightCard() {
+
+}
+
 // Fetch resources from PHP file
 async function loadResources() {
     const loadmsg = document.getElementById("searchResults");
-    loadmsg.innerHTML = '<div class="loadingMSG">Loading resources...</div>';
+    loadmsg.innerHTML = `<div class="loadingMSG">Loading resources...</div>`;
 
     try {
-        const res = await fetch("get_resources.php");
+        const res = await fetch("php/get_resources.php");
         if(!res.ok) throw new Error(`HTTP ${res.status}`);
         RESOURCES = await res.json();
-
-        placeMarkers(RESOURCES);
+        placeMarkers(RESOURCES); 
         applyFilters();
     } catch (err) {
-        loadmsg.innerHTML = '<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.</div>'
+        loadmsg.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.</div>`;
         console.error("loadResources error:", err);
     }
 }
