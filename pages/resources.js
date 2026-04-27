@@ -155,9 +155,14 @@ function renderResources(resources) {
     const count = document.getElementById("resultsCount");
 
     if(resources.length === 0) {
-        
+        container.innerHTML = "";
+        noResults.classList.add("visible");
+        count.textContent = "0 results";
+    } else {
+        noResults.classList.remove("visible");
+        container.innerHTML = resources.map(renderResource).join("");
+        count.textContent = `${resources.length} result${resources.length !== 1 ? "s" : ""}`;
     }
-
 }
 
 // Search bar
