@@ -173,6 +173,10 @@ function renderResources(resources) {
     }
 }
 
+// Popups
+
+
+
 // Search bar
 
 // Filters
@@ -210,6 +214,13 @@ function cardClick(id) {
     map.flyTo([r.lat, r.lng], 15, { animate: true, duration: 0.8 });
     markers[r.id].openPopup();
     highlightCard();
+}
+
+function clearSearch() {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("clearSearch").classList.remove("visible");
+    applyFilters();
+    document.getElementById("searchInput").focus();s
 }
 
 // Highlight cards
