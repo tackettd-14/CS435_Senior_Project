@@ -206,6 +206,14 @@ div.flex-content {
     margin: 8px 0 0;
 }
 
+/* Loading Message */
+.loadingMSG {
+    text-align: center;
+    padding: 30px 20px;
+    color: #888;
+    font-size: 13px;
+}
+
 /* Search Results */
 
 .resource-list {
