@@ -27,7 +27,7 @@ $sql = "
         np.Street_address AS address,
         np.City AS city,
         np.State AS state,
-        np.Zip AS zip
+        np.Zip AS zip,
         np.Email AS email,
         np.Area_code AS area_code,
         np.Phone_number AS phone,
