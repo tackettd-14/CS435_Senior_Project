@@ -294,3 +294,34 @@ div.flex-content {
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     transform: translateY(-1px);
 }
+
+.resource-card.highlighted {
+    border-color: darkblue;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.07);
+}
+
+.rc-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 3px;
+}
+
+.rc-metadata {
+    font-size: 14px;
+    color: #667;
+    margin-bottom: 7px;
+    line-height: 1.5;
+}
+
+.rc-badge {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 99px;
+    float: right;
+    margin-left: 6px;
+}
+
+.badge-open { background-color: green; }
+.badge-closed { background-color: #999; }

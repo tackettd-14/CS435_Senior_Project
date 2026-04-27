@@ -200,6 +200,10 @@ function applyFilters() {
     updateOpenCount(results);
 }
 
+function cardClick(id) {
+    
+}
+
 // Highlight cards
 function highlightCard(id) {
     document.querySelectorAll(".resource-card").forEach(el => el.classList.remove("highlighted"));
