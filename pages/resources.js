@@ -118,8 +118,9 @@ function checkOpen(hours) {
     });
 }
 
-function updateOpenCount() {
-
+function updateOpenCount(resources) {
+    const count = resources.filter(r => checkOpen(r.hours)).length;
+    document.getElementById("openCount").textContent = count;
 }
 
 // Render resources
