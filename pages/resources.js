@@ -70,7 +70,6 @@ function placeMarkers(resources) {
         
         const isOpen = checKOpen(r.hours);
         const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>'
-        
     })
 }
 
