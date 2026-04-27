@@ -39,12 +39,46 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-function placeMarkers() {
+function placeMarkers(resources) {
+    // Clear existing
+    Object.values(markers).forEach(m => map.removeLayer(m));
+    markers = {};
 
+    resources.forEach(r => {
+        if(!r.lat || r.lng) return;
+
+        const color = cat_colors[r.category] || '#888';
+
+        const icon = L.divIcon({
+            className: "",
+            html: `<div style="
+                width:28px;
+                height:28px;
+                background:${color};
+                border:2.5px solid #fff;
+                border-radius:50% 50% 50% 4px;
+                transform:rotate(-45deg);
+                box-shadow:0 2px 8px rgba(0,0,0,0.22);"></div>`,
+                iconSize: [28,28],
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -32]
+        });
+
+        // Build display
+        const hoursDisplay = r.hours && r.hours.length > 0
+            ? r.hours.slice(0, 2).map(h => `${h.day} ${h.open}-${h.close}`).join(".") : "Hours not listed";
+        
+        const isOpen = checKOpen(r.hours);
+        const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>'
+        
+    })
 }
 
-function applyFilters() {
+// Search bar
 
+// Filters
+function applyFilters() {
+    
 }
 
 // Fetch resources from PHP file
