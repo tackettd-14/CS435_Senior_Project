@@ -266,3 +266,31 @@ div.flex-content {
     font-weight: 600;
     color: #aaa;
 }
+
+#searchResults {
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 12px 14px;
+    max-height: 455px;
+}
+#searchResults::-webkit-scrollbar { width: 4px; }
+
+/* Resource Cards */
+
+.resource-card {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 9px;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+    position: relative;
+    border-left: 5px solid transparent;
+}
+
+.resource-card:hover {
+    border-color: gray;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transform: translateY(-1px);
+}
