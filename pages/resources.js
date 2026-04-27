@@ -101,7 +101,7 @@ function placeMarkers(resources) {
 }
 
 function updateMarkerVis() {
-    
+
 }
 
 // Check if resource is currently open
@@ -200,8 +200,14 @@ function applyFilters() {
     updateOpenCount(results);
 }
 
-function highlightCard() {
-
+// Highlight cards
+function highlightCard(id) {
+    document.querySelectorAll(".resource-card").forEach(el => el.classList.remove("highlighted"));
+    const card = document.getElementById("card-" + id);
+    if(card) {
+        card.classList.add("highlighted");
+        card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
 }
 
 // Fetch resources from PHP file
