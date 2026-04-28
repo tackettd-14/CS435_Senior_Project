@@ -78,7 +78,7 @@ function placeMarkers(resources) {
                     ${statusHTML}
                 </div>
                 <div class="popup-metadata">
-                    ${r.address}, ${r.city}, ${r.state}<br>
+                    ${r.address}, ${r.city}, ${r.state}, (${r.area_code}) ${r.phone}<br/>
                     ${hoursDisplay}
                 </div>
                 <div class="popup-tags">
