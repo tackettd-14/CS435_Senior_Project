@@ -91,7 +91,6 @@ function placeMarkers(donations) {
                     ${hoursDisplay}
                 </div>
                 <div class="popup-tags">
-                    <span class="popup-tag">${r.category}</span>
                     ${r.categories.slice(0, 2).map(d => `<span class="popup-tag">${d}</span>`).join("")}
                 </div>
             </div>
@@ -149,8 +148,10 @@ function renderDonation(r) {
           + (r.hours.length > 1 ? ` +${r.hours.length - 1} more` : "")
         : "Hours not listed";
 
-    const donationTags = r.categories.slice(0, 4)
-        .map(d => `<span class="rc-tag">${d}</span>`).join("");
+    const donationTags = r.categories.slice(0, 4).map(d => {
+        const bg = cat_colors[d] || "#aaa";
+        return `<span class="rc-tag" style="background:${bg}55; color:${bg}; border-color:${bg}55;">${d}</span>`;
+    }).join("");
 
     const borderColor = r.categories.length > 0 ? (cat_colors[r.categories[0]] || "#888") : "#888";
 
