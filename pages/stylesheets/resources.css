@@ -344,6 +344,20 @@ div.flex-content {
     margin-left: 6px;
 }
 
+.rc-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.rc-cat-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 99px;
+}
+
 .badge-open { background-color: green; }
 .badge-closed { background-color: #999; }
 

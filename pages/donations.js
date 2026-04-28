@@ -1,23 +1,23 @@
 // Category config
 
 const cat_colors = {
-    "food": "lightgreen",
-    "household": "orange",
-    "clothing":  "slateblue",
-    "personal care": "purple",
-    "baby items": "lightblue",
-    "toys": "pink",
-    "bedding": "saddlebrown"
+    "Food": "lightgreen",
+    "Cleaning Supplies/Household items": "orange",
+    "Clothing": "slateblue",
+    "Personal Hygiene Items": "purple",
+    "Baby items": "lightblue",
+    "Toys": "pink",
+    "Bedding": "saddlebrown"
 };
 
 const cat_labels = {
-    "food": "food",
-    "household": "household",
-    "clothing": "clothing",
-    "personal care": "personal",
-    "baby items": "baby",
-    "toys": "toy",
-    "bedding": "bedding"
+    "food": "Food",
+    "household": "Cleaning Supplies/Household items",
+    "clothing": "Clothing",
+    "personal": "Personal Hygiene Items",
+    "baby": "Baby items",
+    "toy": "Toys",
+    "bedding": "Bedding"
 };
 
 // Map state
@@ -48,59 +48,64 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 function placeMarkers(donations) {
-    // Clear existing
+    // Clear existing markers
     Object.values(markers).forEach(m => map.removeLayer(m));
     markers = {};
 
     donations.forEach(r => {
-        if(!r.lat || !r.lng) return;
+        if (!r.lat || !r.lng) return;
 
-        const color = cat_colors[r.category] || '#888';
+        const color = r.categories.length > 0 ? (cat_colors[r.categories[0]] || "#888") : "#888";
 
         const icon = L.divIcon({
             className: "",
             html: `<div style="
-                width:28px;
-                height:28px;
+                width:28px;height:28px;
                 background:${color};
                 border:2.5px solid #fff;
                 border-radius:50% 50% 50% 4px;
                 transform:rotate(-45deg);
-                box-shadow:0 2px 8px rgba(0,0,0,0.22);"></div>`,
-                iconSize: [28,28],
-                iconAnchor: [14, 28],
-                popupAnchor: [0, -32]
+                box-shadow:0 2px 8px rgba(0,0,0,0.22);
+            "></div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 28],
+            popupAnchor: [0, -32]
         });
 
         // Build display
         const hoursDisplay = r.hours && r.hours.length > 0
-            ? r.hours.slice(0, 2).map(h => `${h.day} ${h.open}-${h.close}`).join(".") : "Hours not listed";
-        
+            ? r.hours.slice(0, 2).map(h => `${h.day} ${h.open}–${h.close}`).join(", ") : "Hours not listed";
+
         const isOpen = checkOpen(r.hours);
-        const statusHTML = isOpen ? '<span class="popup-status open">Open now</span>' : '<span class="popup-status closed">Closed</span>';
+        const statusHtml = isOpen
+            ? `<span class="popup-status open">Open now</span>` : `<span class="popup-status closed">Closed</span>`;
 
         const popup = L.popup({ closeButton: false, maxWidth: 240 }).setContent(`
             <div class="popup-inner">
                 <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:4px;">
                     <div class="popup-name">${r.name}</div>
-                    ${statusHTML}
+                    ${statusHtml}
                 </div>
                 <div class="popup-metadata">
-                    ${r.address}, ${r.city}, ${r.state}<br>
+                    ${r.address}, ${r.city}, ${r.state}<br/>
                     ${hoursDisplay}
                 </div>
                 <div class="popup-tags">
                     <span class="popup-tag">${r.category}</span>
+                    ${r.categories.slice(0, 2).map(d => `<span class="popup-tag">${d}</span>`).join("")}
                 </div>
             </div>
             <div class="popup-footer">
                 ${r.website && r.website !== "N/A"
-                    ? `<a href="${r.website}" target="_blank" rel="noopener">Visit Website -></a>`
+                    ? `<a href="${r.website}" target="_blank" rel="noopener">Visit website →</a>`
                     : `<span style="font-size:12px; color:#999;">No website listed</span>`}
             </div>
         `);
 
-        const marker = L.marker([r.lat, r.lng], { icon }).addTo(map).bindPopup(popup);
+        const marker = L.marker([r.lat, r.lng], { icon })
+            .addTo(map)
+            .bindPopup(popup);
+
         marker.on("click", () => highlightCard(r.id));
         markers[r.id] = marker;
     });
@@ -108,17 +113,9 @@ function placeMarkers(donations) {
     updateOpenCount(donations);
 }
 
-function updateMarkerVis(visible) {
-    const visibleIDs = new Set(visible.map(r => r.id));
-    Object.entries(markers).forEach(([id, m]) => {
-        const el = m.getElement();
-        if(el) el.style.opacity = visibleIDs.has(parseInt(id)) ? "1" : "0.18";
-    });
-}
-
-// Check if donation is currently open
+// Check if resource is currently open
 function checkOpen(hours) {
-    if(!hours || hours.length === 0) return false;
+    if (!hours || hours.length === 0) return false;
     const now = new Date();
     const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const todayName = dayNames[now.getDay()];
@@ -126,9 +123,9 @@ function checkOpen(hours) {
 
     return hours.some(h => {
         if (h.day !== todayName) return false;
-        const [openH, openM] = h.open.split(":").map(Number);
+        const [openH, openM]   = h.open.split(":").map(Number);
         const [closeH, closeM] = h.close.split(":").map(Number);
-        const openMin = openH * 60 + openM;
+        const openMin  = openH  * 60 + openM;
         const closeMin = closeH * 60 + closeM;
         return currentMinutes >= openMin && currentMinutes < closeMin;
     });
@@ -144,33 +141,39 @@ function updateOpenCount(donations) {
 // Cards
 function renderDonation(r) {
     const isOpen = checkOpen(r.hours);
-    const badgeHTML = isOpen ? `<span class="rc-badge badge-open">Open now</span>`
+    const badgeHtml = isOpen ? `<span class="rc-badge badge-open">Open now</span>` 
         : `<span class="rc-badge badge-closed">Closed</span>`;
 
-        const hoursShort = r.hours && r.hours.length > 0
-            ? `${r.hours[0].day} ${r.hours[0].open}-${r.hours[0].close}`
-            + (r.hours.length > 1 ? ` +${r.hours.length - 1} more` :"") : "Hours not listed";
+    const hoursShort = r.hours && r.hours.length > 0
+        ? `${r.hours[0].day} ${r.hours[0].open}–${r.hours[0].close}`
+          + (r.hours.length > 1 ? ` +${r.hours.length - 1} more` : "")
+        : "Hours not listed";
 
-        const color = cat_colors[r.category] || "#888";
+    const donationTags = r.categories.slice(0, 4)
+        .map(d => `<span class="rc-tag">${d}</span>`).join("");
 
-        return `
-            <div class="resource-card" id="card-${r.id}"
-                style="border-left-color:${color};" onclick="cardClick(${r.id})">
-                <div class="rc-name">${badgeHTML}${r.name}</div>
-                <div class="rc-metadata">
-                    ${r.address}, ${r.city}<br>
-                    ${hoursShort}
-                </div>
+    const borderColor = r.categories.length > 0 ? (cat_colors[r.categories[0]] || "#888") : "#888";
+
+    return `
+        <div class="resource-card" id="card-${r.id}"
+             style="border-left-color:${borderColor};"
+             onclick="cardClick(${r.id})">
+            <div class="rc-name">${badgeHtml}${r.name}</div>
+            <div class="rc-meta">
+                ${r.address}, ${r.city}<br/>
+                ${hoursShort}
             </div>
-        `;
-    }
+            <div class="rc-tags">${donationTags}</div>
+        </div>
+    `;
+}
 
 function renderDonations(donations) {
     const container = document.getElementById("searchResults");
     const noResults = document.getElementById("noResults");
-    const count = document.getElementById("resultsCount");
+    const count     = document.getElementById("resultsCount");
 
-    if(donations.length === 0) {
+    if (donations.length === 0) {
         container.innerHTML = "";
         noResults.classList.add("visible");
         count.textContent = "0 results";
@@ -192,23 +195,28 @@ function applyFilters() {
     let results = DONATIONS;
 
     // Category
-    if(activeFilter === "open") {
+    if (activeFilter === "open") {
         results = results.filter(r => checkOpen(r.hours));
-    } else if(activeFilter !== "all") {
-        results = results.filter(r => cat_labels[r.category] === activeFilter);
+    } else if (activeFilter !== "all") {
+        const targetCategory = cat_labels[activeFilter];
+        if(targetCategory) {
+            results = results.filter(r => r.categories.includes(targetCategory));
+        }
     }
 
     // Text search
-    if(query) {
+    if (query) {
         results = results.filter(r => {
             const haystack = [
-                r.name, r.category, r.address, r.city, r.description
+                r.name, r.address, r.city,
+                ...r.categories, r.description
             ].join(" ").toLowerCase();
             return haystack.includes(query);
         });
     }
+
     renderDonations(results);
-    updateMarkerVis(results);
+    updateMarkerVisibility(results);
     updateOpenCount(results);
 }
 
@@ -219,14 +227,6 @@ function filterCategory(cat, el) {
     applyFilters();
 }
 
-function cardClick(id) {
-    const r = DONATIONS.find(x => x.id === id);
-    if(!r || !markers[r.id]) return;
-    map.flyTo([r.lat, r.lng], 15, { animate: true, duration: 0.8 });
-    markers[r.id].openPopup();
-    highlightCard();
-}
-
 function clearSearch() {
     document.getElementById("searchInput").value = "";
     document.getElementById("clearSearch").classList.remove("visible");
@@ -234,30 +234,49 @@ function clearSearch() {
     document.getElementById("searchInput").focus();
 }
 
+function updateMarkerVisibility(visible) {
+    const visibleIds = new Set(visible.map(r => r.id));
+    Object.entries(markers).forEach(([id, m]) => {
+        const el = m.getElement();
+        if (el) el.style.opacity = visibleIds.has(parseInt(id)) ? "1" : "0.18";
+    });
+}
+
+function cardClick(id) {
+    const r = DONATIONS.find(x => x.id === id);
+    if (!r || !markers[r.id]) return;
+    map.flyTo([r.lat, r.lng], 15, { animate: true, duration: 0.8 });
+    markers[r.id].openPopup();
+    highlightCard(id);
+}
+
 // Highlight cards
 function highlightCard(id) {
     document.querySelectorAll(".resource-card").forEach(el => el.classList.remove("highlighted"));
     const card = document.getElementById("card-" + id);
-    if(card) {
+    if (card) {
         card.classList.add("highlighted");
         card.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 }
 
-// Fetch donations from PHP file
+// Fetch resources from PHP file
 async function loadDonations() {
     const container = document.getElementById("searchResults");
-    container.innerHTML = `<div class="loadingMSG">Loading donations...</div>`;
+    container.innerHTML = `<div class="loading-msg">Loading donations…</div>`;
 
     try {
         const res = await fetch("php/get_donations.php");
-        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         DONATIONS = await res.json();
-        placeMarkers(DONATIONS); 
+
+        placeMarkers(DONATIONS);
         applyFilters();
     } catch (err) {
-        container.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load donations. Please try refreshing the page.</div>`;
-        console.error("loadDonations error:", err);
+        container.innerHTML = `<div class="loading-msg" style="color:#c00;">
+            Failed to load Donations. Please try refreshing the page.<br/>
+            <small>${err.message}</small></div>`;
+        console.error("loadResources error:", err);
     }
 }
 

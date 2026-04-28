@@ -248,7 +248,8 @@ async function loadResources() {
         placeMarkers(RESOURCES); 
         applyFilters();
     } catch (err) {
-        container.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.</div>`;
+        container.innerHTML = `<div class="loadingMSG" style="color:red;">Failed to load resources. Please try refreshing the page.<br>
+        <small>${err.message}</small></div>`;
         console.error("loadResources error:", err);
     }
 }

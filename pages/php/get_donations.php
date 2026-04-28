@@ -21,24 +21,22 @@ $mysqli->set_charset('utf8mb4');
 
 // Query to join donations and non-profit tables
 $sql = "
-    SELECT
-        d.List_id AS id,
-        np.Name AS name,
+    SELECT DISTINCT
+        np.Nonprofit_id AS id,
+        np.Name         AS name,
         np.Street_address AS address,
-        np.City AS city,
-        np.State AS state,
-        np.Zip AS zip,
+        np.City         AS city,
+        np.State        AS state,
+        np.Zip          AS zip,
         np.Phone_number AS phone,
-        np.Area_code AS area_code,
-        np.Email AS email,
-        np.Website AS website,
-        np.Description AS description,
-        np.Latitude AS lat,
-        np.Longitude AS lng,
-        dc.CName AS category
-    FROM Donation_Lists d
-    INNER JOIN Non_Profits np ON d.Nonprofit_id = np.Nonprofit_id
-    INNER JOIN Donation_Categories dc ON d.Donation_Category = dc.DCategory_id
+        np.Area_code    AS area_code,
+        np.Email        AS email,
+        np.Website      AS website,
+        np.Description  AS description,
+        np.Latitude     AS lat,
+        np.Longitude    AS lng
+    FROM Non_Profits np
+    INNER JOIN Donation_Lists d ON np.Nonprofit_id = d.Nonprofit_id
     ORDER BY np.Name ASC";
 
     $result = $mysqli->query($sql);
@@ -98,7 +96,7 @@ $sql = "
     $sqlcat = "
         SELECT 
             dl.Nonprofit_id,
-            dc.CName AS catname
+            dc.CName AS category_name
         FROM Donation_Lists dl
         INNER JOIN Donation_Categories dc ON dl.Donation_Category = dc.DCategory_id
         WHERE dl.Nonprofit_id IN ($ids_placeholder)
@@ -110,7 +108,7 @@ $sql = "
         while($d = $resultcat->fetch_assoc()) {
             $did = (int) $d['Nonprofit_id'];
             if(isset($donations[$did])) {
-                $donations[$did]['donations'][] = $d['catname'];
+                $donations[$did]['categories'][] = $d['category_name'];
             }
         }
         $resultcat->free();
